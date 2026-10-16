@@ -166,7 +166,7 @@ async function exp(){const h=['nome','cidade','segmento','servico','status','eta
 try{const d=await window.claude.use('downloads');if(d){await d.save({filename:'clientes-luminex.csv',data:csv});ok=true}}catch(e){console.error(e)}
 if(ok){toast('Arquivo exportado');return}
 $('md').innerHTML='<h3 style="margin:0">Exportar CSV</h3><div class="s">O download não está disponível aqui. Copie o texto e cole em uma planilha ou bloco de notas.</div><textarea id="m_t" rows="12" readonly>'+esc(csv)+'</textarea><div class="rw" style="margin-top:10px"><button class="pri" onclick="cpy()">Copiar</button><button onclick="cl2()">Fechar</button></div>';$('ov').classList.add('on')}
-const SB_URL='COLE_AQUI_A_URL_DO_SUPABASE',SB_KEY='COLE_AQUI_A_CHAVE_ANON_PUBLICA';
+const SB_URL='https://itjtclmfuxajlxmgxvss.supabase.co/rest/v1/',SB_KEY='sb_publishable_74uiayo1VFLhNeOrVnjDdw_Y5hLFrjT';
 let sb=null,UID=null,SYN={};
 async function lerRemoto(){const a=await sb.from('clientes').select('id,data'),b=await sb.from('metas').select('data').maybeSingle();if(a.error)throw a.error;C=a.data.map(x=>x.data);SYN={};C.forEach(c=>{SYN[c.id]=JSON.stringify(c)});if(b.data&&b.data.data)G=b.data.data}
 async function sbSave(){const ch=[],cur={};C.forEach(c=>{const j=JSON.stringify(c);cur[c.id]=j;if(SYN[c.id]!==j)ch.push({id:c.id,user_id:UID,data:c})});const del=Object.keys(SYN).filter(k=>!(k in cur));
