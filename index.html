@@ -181,4 +181,4 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&UID)lerRe
 (async()=>{if(SB_URL.indexOf('COLE')===0||!window.supabase){try{const j=JSON.parse(localStorage.getItem('lumx_crm')||'null');if(j){C=j.clients||[];G=j.goals||G}}catch(e){}$('bn').textContent='Modo local (Supabase não configurado): dados salvos só neste navegador. Faça backup.';rd();return}
 sb=window.supabase.createClient(SB_URL,SB_KEY);const r=await sb.auth.getSession();if(r.data.session){UID=r.data.session.user.id;await carregar()}else{rd();login()}})();
 rd();
-</script></body></html>
+</script></body></html> 
